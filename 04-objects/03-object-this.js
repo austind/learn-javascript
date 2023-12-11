@@ -59,3 +59,23 @@ let calculator = {
     sum() {return this.a + this.b },
     mul() {return this.a * this.b },
 };
+
+// Write this function so you can chain methods like this:
+
+// ladder.up().up().down().showStep().down().showStep(); // shows 1 then 0
+
+let ladder = {
+    step: 0,
+    up() {
+      this.step++;
+      return this;
+    },
+    down() {
+      this.step--;
+      return this;
+    },
+    showStep: function() { // shows the current step
+      alert( this.step );
+      return this;
+    }
+};
