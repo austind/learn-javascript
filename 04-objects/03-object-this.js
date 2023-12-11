@@ -48,3 +48,14 @@ console.log(user.ref.name); // Error: Cannot read property 'name' of undefined
 // a function, not as a method with dot syntax.
 
 // One final note: Arrow functions don't have a `this` property.
+
+// Calculator exercise
+
+let calculator = {
+    read() {
+        this.a = +prompt('A?')
+        this.b = +prompt('B?')
+    },
+    sum() {return this.a + this.b },
+    mul() {return this.a * this.b },
+};
