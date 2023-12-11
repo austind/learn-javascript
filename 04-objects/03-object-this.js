@@ -32,4 +32,19 @@ user2.hi() // 'Alyssa'
 // a function can be defined outside an object. But it can also lead to errors
 // and confusion.
 
+// Take this example:
+
+function makeUser() {
+    return {
+        name: 'Tobias',
+        ref: this
+    };
+}
+
+let user3 = makeUser();
+console.log(user.ref.name); // Error: Cannot read property 'name' of undefined
+
+// The value of `this` inside makeUser() is undefined, because it is called as
+// a function, not as a method with dot syntax.
+
 // One final note: Arrow functions don't have a `this` property.
