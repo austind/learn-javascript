@@ -55,4 +55,52 @@ console.log(0.1 + 0.2); // 0.30000000000000004
 let sum = 0.1 + 0.2;
 console.log(+sum.toFixed(2)); // 0.3
 
-// https://javascript.info/number#tests-isfinite-and-isnan
+// Special numeric values:
+// Infinity and -Infinity
+// NaN
+
+console.log(isNaN(NaN)); // true
+console.log(isNaN("string")); // true
+
+// NaN can't be compared with anything, even itself
+console.log(NaN === NaN); // false
+
+// isFinite converts to number and checks if it's not a special number
+console.log(isFinite("15")); // true
+console.log(isFinite("string")); // false, because it evaluates to NaN
+console.log(isFinite(Infinity)); // false
+
+// Converting to numbers with unary + or Number() is strict.
+// It fails if the value isn't a number:
+console.log(+"100px"); // NaN
+
+// The only exception is if there are spaces before or after the string:
+console.log(+"  100  "); // 100
+
+// parseInt and parseFloat read a string until a number is found
+console.log(parseInt('100px')); // 100
+console.log(parseFloat('12.5em')); // 12.5
+console.log(parseInt('12.3')); // 12, only integer is returned
+console.log(parseFloat('12.3.4.5')); // 12.3, second point stops reading
+
+// Both return NaN if the first symbol is not a number
+console.log(parseInt('a1234')); // NaN
+
+// You can also pass a radix base for other systems
+console.log(parseInt('0xff', 16)); // 255
+console.log(parseInt('ff', 16)); // 255, works without 0x
+console.log(parseInt('2n9c', 36)); // 123456
+
+// There is a built-in math library with a few functions and constants
+// Returns a random number from 0 to 1 (excluding 1)
+console.log(Math.random()); // 0.5435252343232
+
+// Find the largest and smallest numbers in an arbitrary number of args
+console.log(Math.max(3, 5, 8, -5, 0, 6)); // 8
+console.log(Math.min(0, 1, 2)); // 0
+
+// Arbitrary exponentiation
+console.log(Math.pow(2, 3)); // 8
+
+// More details:
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math
