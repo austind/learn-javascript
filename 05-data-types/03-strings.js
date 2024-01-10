@@ -57,4 +57,43 @@ console.log(str.includes("sucka")); // false
 console.log(str.startsWith('Hello')); // true
 console.log(str.endsWith("Austin")); // true
 
-// https://javascript.info/string#getting-a-substring
+// Getting a substring
+
+// 3 methods to get a substring: substring, sbustr, and slice.
+
+// str.slice(start, [, end])
+// Returns the part of the string from start to, but not including, end.
+str = 'stringify';
+console.log(str.slice(0, 5)); // 'strin'
+console.log(str.slice(0, 1)); // 's'
+
+// If there is no second argument, slice goes to the end of the string
+console.log(str.slice(2)); // 'ringify'
+
+// Negative values are possible too. They read from the end of the string.
+console.log(str.slice(-4, -1)); // 'gif'
+
+// str.substring(start, [, end])
+// Returns the part of the string between start and end, but not including end.
+// This is almost the same as slice, but allows start to be greater than end,
+// which simply swaps start and end values.
+console.log(str.substring(2,6)); // 'ring'
+console.log(str.substring(6,2)); // 'ring'
+// Negative arguments aren't supported.
+
+// str.substr is deprecated and not recommended to use.
+
+// Comparing strings
+
+// Some weird things happen
+console.log('a' > 'Z'); // true, lowercase letters are always greater than uppercase
+
+// Remember, JavaScript uses UTF-16 to encode strings.
+// Each character has its own corresponding decimal value.
+console.log("a".codePointAt(0)); // 97
+console.log("Z".codePointAt(0)); // 90
+
+// You can also do the reverse
+console.log(String.fromCodePoint(90)); // 'Z'
+console.log(String.fromCodePoint(0x5a)); // 'Z' (hexadecimal also works)
+
