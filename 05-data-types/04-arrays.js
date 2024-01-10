@@ -45,3 +45,65 @@ console.log(fruits.shift()); // Remove "Apple" and log it to console
 // Unshift adds the element to the beginning of the array
 fruits.unshift("Apple"); // Apple is now back at the beginning of the array
 
+// Push and unshift can add multiple elements at once
+let cars = ['Model S']
+cars.push("Model 3", "Model Y");
+cars.unshift("Cybertruck");
+console.log(cars); // Cybertruck, Model S, Model 3, Model Y
+
+// Arrays are a special kind of object.
+// They are copied by reference, not by value
+// You can misuse arrays like objects, but don't do it. It will invalidate
+// optimizations. Use regular objects if you need an object.
+
+// Push/pop are fast, shift/unshift are slow. Why gets complicated.
+
+// Loops
+
+// Super old way to loop with indices
+let array = ['Apple', 'Orange', 'Pear'];
+for (let i = 0; i < array.length; i++) {
+  console.log(array[i]);
+}
+
+// Simpler way
+for (let fruit of fruits) {
+  console.log(fruit);
+}
+
+// Even though it's possible to use for..in, don't do it. The reasons get complicated.
+
+// the length property is a misnomer. It's not actually the count of
+// the number of elements in the array, it's the highest index + 1.
+let jsIsDumb = [];
+jsIsDumb[12345] = "Derrrrp";
+console.log(jsIsDumb.length); // 12346
+// *facepalm*
+
+// Just as stupid, the length property is *writable*.
+arr = [1, 2, 3, 4, 5];
+arr.length = 2;
+console.log(arr); // 1, 2
+
+// So, to empty an array, do this:
+arr.length = 0;
+// *double facepalm*
+
+// You can use arrays like matrices
+let matrix = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+];
+console.log(matrix[1][1]); // 5
+
+// Arrays have their own toString method
+arr = [1, 2, 3];
+console.log(arr); // 1,2,3
+console.log(String(arr) == '1,2,3'); // true
+
+// Since arrays are objects, don't compare them with ==
+// Remember, objects are only equal if they are references to the same object
+// You can only compare arrays item-by-item in a loop or iteration
+// *triple facepalm*
+
