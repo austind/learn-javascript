@@ -75,3 +75,88 @@ console.log(arr.indexOf(null)); // -1
 console.log(arr.includes(1)); // true
 
 // Note: indexOf uses strict comparison (===) so it will only look for false, not 0.
+
+// arr.find(fn) finds an element in an array. This is similar to using a list
+// comprehension in Python for finding an element.
+
+let result = arr.find(function(item, index, array) {
+  // if found, item returned and iteration stops
+  // if falsy returns undefined
+});
+
+let users = [
+  {id: 1, name: 'Austin'},
+  {id: 2, name: 'Aaron'},
+  {id: 3, name: 'Ace'},
+];
+
+let user = users.find(item => item.id == 1);
+console.log(user.name); // "John"
+
+// arr.findIndex() has the same syntax, but returns the index instead of the item.
+// arr.findLastIndex() is also the same, but starts from the end of the array.
+
+// If there may be many items matching a query, use arr.filter()
+
+users = [
+  {id: 1, name: 'Alyssa'},
+  {id: 2, name: 'Amelia'},
+  {id: 3, name: 'Alexi'},
+  {id: 4, name: 'Annalyse'},
+];
+
+let foundUsers = users.filter(item => item.id < 3);
+console.log(foundUsers.length); // 2 (Alyssa and Amelia, as their id is less than 2)
+
+// arr.map() runs a function on each element of an array, and returns the array of results.
+
+let names = [
+  'Bilbo',
+  'Gandalf',
+  'Frodo',
+];
+let nameLengths = names.map(item => item.length);
+console.log(lengths); // 5, 7, 5
+
+// arr.sort() sorts the array *in place*, changing the element order.
+// It also returns the sorted array, but this is usually ignored.
+// This might have unexpected results, as in this example:
+arr = [1, 2, 15];
+arr.sort();
+console.log(arr); // 1, 15, 2
+
+// This is because all elements are sorted as strings.
+// To sort numerically, you need to pass a sorting function to sort()
+console.log(arr.sort( (a, b) => a - b ));
+
+// arr.reverse() reverses the order in place
+arr = [1, 2, 3, 4, 5];
+arr.reverse();
+console.log(arr); // 5, 4, 3, 2, 1
+
+// arr.split(delim, [limit]) splits a string on a delimiting character, for an optional
+// limited number of iterations
+names = 'Bilbo, Gandalf, Nazgul';
+arr = names.split(', ', 2);
+console.log(arr); // Bilbo, Gandalf (as an array)
+
+// arr.join(glue) does the reverse of split()
+arr = ['Bilbo', 'Gandalf', 'Nazgul'];
+let str = arr.join(';');
+console.log(str); // "Bilbo;Gandalf;Nazgul"
+
+// arr.reduce() and arr.reduceRight() are similar to arr.map() but more complex.
+// Example:
+arr = [1, 2, 3, 4, 5];
+result = arr.reduce((sum, current) => sum + current, 0);
+console.log(result); // 15
+// The first argumente is the aggregate value
+// Current is the value of the current item
+// the result of the function is added to sum
+// reduceRight does the same as reduce, but in reverse array order.
+
+// Since arrays are just objects, typeof isn't helpful in identifying arrays.
+// So we have Array.isarray()
+console.log(Array.isArray({})); // false
+console.log(Array.isArray([])); // true
+
