@@ -5,7 +5,7 @@ const promise3 = new Promise((resolve, reject) => setTimeout(resolve, 1200, 'Pro
 
 Promise.allSettled([promise1, promise2, promise3])
   .then(results => {
-    results.forEach(result=> {
+    results.forEach(result => {
       if (result.status === 'fulfilled') {
         console.log(`Fulfilled: ${result.value}`);
       } else {
